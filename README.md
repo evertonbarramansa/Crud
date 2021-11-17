@@ -12,5 +12,14 @@ Professor:Orlando Saraiva Junior
 
 
 ## Sobre o Projeto 
+<br>
+
+Projeto desenvolvido em forma de Crud( Create, Read, Update, Delete), o projeto em si resume em um Crud básico de cadastro de carros, com os comandos de inserir, modificar, listar e deletar.
+<br>
+<br>
+
+![UF47](https://user-images.githubusercontent.com/51486508/142290950-826be10e-3d93-49e8-a3ef-b388fb09daed.gif)
+
+
 
 
