@@ -3,9 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Models\Modelcarros;
+use App\Models\User;
 
 class CarroController extends Controller
 {
+    private $objUser;
+    private $objcarros;
+
+
+    public function __construct()
+
+    {
+        $this->objUser=new User();
+        $this->objcarros=new Modelcarros();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +26,10 @@ class CarroController extends Controller
      */
     public function index()
     {
-        return view( "index");
+       // return view( "index");//
+       $carros=$this->objcarros->paginate(5);//quando uso paginate
+       //limita a quantidade de registro que a tela mostra, se usar all mostra todos
+       return view('index',compact('carros'));
     }
 
     /**
@@ -23,7 +39,8 @@ class CarroController extends Controller
      */
     public function create()
     {
-        //
+        $users=$this->objUser->all();
+        return view('create',compact('users'));
     }
 
     /**
@@ -34,19 +51,28 @@ class CarroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cad=$this->objcarros->create([
+            'modelo'=>$request->modelo,
+            'ano_lancamento'=>$request->ano_lancamento,
+            'valor'=>$request->valor,
+            'id_user'=>$request->id_user
+         ]);
+     
+         if($cad){
+             return redirect('carros');
     }
-
+    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+     public function show($id)
     {
-        //
-    }
+       $carros=$this->objcarros->find($id);
+        return view('show',compact('carros'));
+    } 
 
     /**
      * Show the form for editing the specified resource.
@@ -56,7 +82,9 @@ class CarroController extends Controller
      */
     public function edit($id)
     {
-        //
+        $carros=$this->objcarros->find($id);
+        $users=$this->objUser->all();
+        return view('create',compact('carros','users'));
     }
 
     /**
@@ -68,8 +96,15 @@ class CarroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->objcarros->where(['id'=>$id])->update([
+            'modelo'=>$request->modelo,
+            'ano_lancamento'=>$request->ano_lancamento,
+            'valor'=>$request->valor,
+            'id_user'=>$request->id_user
+        ]);
+        return redirect('carros');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -79,6 +114,7 @@ class CarroController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $del=$this->objcarros->destroy($id);
+        return($del)?"sim":"não";
     }
 }
