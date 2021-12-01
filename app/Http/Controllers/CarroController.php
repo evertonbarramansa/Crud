@@ -27,7 +27,7 @@ class CarroController extends Controller
     public function index()
     {
        // return view( "index");//
-       $carros=$this->objcarros->paginate(5);//quando uso paginate
+       $carros=$this->objcarros->paginate(8);//quando uso paginate
        //limita a quantidade de registro que a tela mostra, se usar all mostra todos
        return view('index',compact('carros'));
     }

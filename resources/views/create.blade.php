@@ -1,7 +1,7 @@
 @extends('templates.template')
 
 @section('content')
-    <h1 class="text-center">@if(isset($carros)) Editar Carro @else  Cadastrar novo Carro @endif</h1> <hr>
+    <h1 class="text-center">@if(isset($carros)) Editar carros @else  Cadastrar novo carros @endif</h1> <hr>
 
     <div class="col-8 m-auto">
 
@@ -29,11 +29,11 @@
                 </select><br>
                 <input class="form-control" type="text" name="ano_lancamento" id="ano_lancamento" placeholder="Ano:" value="{{$carros->ano_lancamento ?? ''}}" required><br>
                 <input class="form-control" type="text" name="valor" id="tempo" placeholder="valor:" value="{{$carros->valor ?? ''}}" required><br>
-                <input class="btn btn-primary" type="submit" value="@if(isset($carros)) Editar @else Cadastrar @endif">
+                <input class="btn btn-danger" type="submit" value="@if(isset($carros)) Editar carros @else Cadastrar novo carros @endif">
             </form>
     </div>
     <a href="{{url('carros')}}">
-        <h1 class="text-center"> <button class="btn btn-success">
+        <h1 class="text-center"> <button class="btn btn-secondary">
             Retornar para pagina inicial</button></h1>
         </a>
 @endsection

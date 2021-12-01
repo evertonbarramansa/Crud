@@ -1,19 +1,19 @@
 @extends('templates.template')
 
 @section('content')
-        <H1 class="text-center">Carros</H1>
+        <H1 class="text-center">Crud Carros</H1>
         <hr>
 
       <div class="text-center mt-3 mb-4">
         <a href="{{url('carros/create')}}">
-            <button class="btn btn-sucess">Cadastrar</button>
+            <button class="btn btn-secondary">Cadastrar Novo</button>
         </a>
 </div>
 
         <div class="col-8 m-auto">
-            @csrf    
+        @csrf   
         <table class="table text-center">
-  <thead class="thead-dark">
+  <thead class="table table-hover table-dark">
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Modelo</th>
@@ -37,27 +37,24 @@
      
         <td>
             <a href="{{url("carros/$carros->id")}}">
-                <button class="btn btn-dark">Visualizar</button>
+                <button class="btn btn-dark">Visualizar Cadastro</button>
             </a>
 
             <a href="{{url("carros/$carros->id/edit")}}">
-                <button class="btn btn-primary">Editar</button>
+                <button class="btn btn-primary">Editar Cadastro</button>
             </a>
 
-            <a href="{{url("carros/$carros->id")}}"class='js-del'>
-                <button class="btn btn-danger">Deletar</button>
-            </a>
+            <a href="{{url("carros/$carros->id")}}" class="js-del">
+            <button class="btn btn-danger">Deletar Cadastro</button>
+                </a>
+            
         </td>
     </tr>
     @endforeach
-
-
-
-    
-    
-  </tbody>
+ </tbody>
 </table>
 
+    </div>
 
         
        
